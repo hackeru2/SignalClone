@@ -1,0 +1,35 @@
+{
+  "paths": [
+    {
+      "name": "/pets",
+      "lambdaFunction": "petsfunction",
+      "privacy": {
+        "open": true
+      },
+      "policyResourceName": "/pets"
+    }
+  ],
+  "resourceName": "petsapi",
+  "apiName": "petsapi",
+  "functionArns": [
+    {
+      "lambdaFunction": "petsfunction"
+    }
+  ],
+  "privacy": {
+    "auth": 0,
+    "unauth": 0,
+    "authRoleName": "amplify-myampnuxt-dev-83323-authRole",
+    "unAuthRoleName": "amplify-myampnuxt-dev-83323-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "petsfunction",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

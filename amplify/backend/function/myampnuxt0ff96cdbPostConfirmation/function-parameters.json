@@ -1,0 +1,17 @@
+{
+  "trigger": true,
+  "modules": [
+    "custom"
+  ],
+  "parentResource": "myampnuxt0ff96cdb",
+  "functionName": "myampnuxt0ff96cdbPostConfirmation",
+  "resourceName": "myampnuxt0ff96cdbPostConfirmation",
+  "parentStack": "auth",
+  "triggerEnvs": [],
+  "triggerDir": "/Users/amirlifshitz/.npm-global/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/triggers/PostConfirmation",
+  "triggerTemplate": "PostConfirmation.json.ejs",
+  "triggerEventPath": "PostConfirmation.event.json",
+  "roleName": "myampnuxt0ff96cdbPostConfirmation",
+  "skipEdit": true,
+  "enableCors": false
+}
