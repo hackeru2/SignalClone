@@ -1,33 +1,24 @@
 {
-  "dev": {
+  "staging": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-myampnuxt-dev-83323-authRole",
-      "UnauthRoleArn": "arn:aws:iam::202207989600:role/amplify-myampnuxt-dev-83323-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::202207989600:role/amplify-myampnuxt-dev-83323-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-myampnuxt-dev-83323-deployment",
-      "UnauthRoleName": "amplify-myampnuxt-dev-83323-unauthRole",
-      "StackName": "amplify-myampnuxt-dev-83323",
-      "StackId": "arn:aws:cloudformation:us-east-2:202207989600:stack/amplify-myampnuxt-dev-83323/15814b50-3555-11ec-82fe-023c397d9a40",
-      "AmplifyAppId": "d2vsepywzelvvk",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-myampnuxt-dev-83323-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "AuthRoleName": "amplify-signalclone-staging-152243-authRole",
+      "UnauthRoleArn": "arn:aws:iam::202207989600:role/amplify-signalclone-staging-152243-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::202207989600:role/amplify-signalclone-staging-152243-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-signalclone-staging-152243-deployment",
+      "UnauthRoleName": "amplify-signalclone-staging-152243-unauthRole",
+      "StackName": "amplify-signalclone-staging-152243",
+      "StackId": "arn:aws:cloudformation:us-east-1:202207989600:stack/amplify-signalclone-staging-152243/8dd10c60-3fde-11ec-b1ec-0e041ceb2447",
+      "AmplifyAppId": "d31czol4irkw8a"
     },
     "categories": {
       "auth": {
-        "myampnuxt0ff96cdb": {}
+        "signalClone": {}
       },
       "function": {
-        "testapifunction": {
-          "deploymentBucketName": "amplify-myampnuxt-dev-83323-deployment",
-          "s3Key": "amplify-builds/testapifunction-6f3176644b454b743838-build.zip"
-        },
-        "petsfunction": {
-          "deploymentBucketName": "amplify-myampnuxt-dev-83323-deployment",
-          "s3Key": "amplify-builds/petsfunction-67685759374b53346156-build.zip"
-        },
-        "myampnuxt0ff96cdbPostConfirmation": {
-          "deploymentBucketName": "amplify-myampnuxt-dev-83323-deployment",
-          "s3Key": "amplify-builds/myampnuxt0ff96cdbPostConfirmation-39646633776b6a6a3153-build.zip"
+        "signalClonePostConfirmation": {
+          "deploymentBucketName": "amplify-signalclone-staging-152243-deployment",
+          "s3Key": "amplify-builds/signalClonePostConfirmation-534775486630506b7274-build.zip"
         }
       }
     }
