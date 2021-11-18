@@ -19,7 +19,7 @@ import {
   Pressable,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
-
+import ChatRoomHeader from "./ChatRoomHeader";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import { RootStackParamList } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
@@ -59,10 +59,10 @@ function RootNavigator() {
       <Stack.Screen
         name="ChatRoom"
         component={ChatRoomScreen}
-        options={{
-          headerTitle: ChatRoomHeader,
+        options={({ route }) => ({
+          headerTitle: () => <ChatRoomHeader id={route.params?.id} />,
           headerBackTitleVisible: false,
-        }}
+        })}
       />
       <Stack.Screen
         name="UsersScreen"
@@ -123,46 +123,6 @@ const HomeHeader = (props) => {
           style={{ marginHorizontal: 10 }}
         />
       </Pressable>
-    </View>
-  );
-};
-
-const ChatRoomHeader = (props) => {
-  const { width } = useWindowDimensions();
-  console.log(props);
-
-  return (
-    <View
-      style={{
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: width - 25,
-        marginLeft: 25,
-        padding: 10,
-        alignItems: "center",
-      }}
-    >
-      <Image
-        source={{
-          uri: "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/avatars/vadim.jpg",
-        }}
-        style={{ width: 30, height: 30, borderRadius: 30 }}
-      />
-      <Text style={{ flex: 1, marginLeft: 10, fontWeight: "bold" }}>
-        {props.children}
-      </Text>
-      <Feather
-        name="camera"
-        size={24}
-        color="black"
-        style={{ marginHorizontal: 10 }}
-      />
-      <Feather
-        name="edit-2"
-        size={24}
-        color="black"
-        style={{ marginHorizontal: 10 }}
-      />
     </View>
   );
 };

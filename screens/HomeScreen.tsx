@@ -28,7 +28,7 @@ export default function HomeScreen(props) {
         )
         .map((chatRoomUser) => chatRoomUser.chatroom);
 
-      // console.log({ chatRooms });
+      console.log({ chatRooms });
       // if (!chatRooms.length) return
       setChatRooms(chatRooms);
       //console.log({ navigation, props });

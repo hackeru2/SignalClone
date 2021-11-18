@@ -14,31 +14,17 @@ export default function UserItem({ user, chatRooms }) {
     const authUser = await Auth.currentAuthenticatedUser();
     const authUserID = authUser.attributes.sub;
     const chatRoomUsers = await DataStore.query(ChatRoomUser);
-    // const authChatRooms = chatRoomUsers
-    //   .filter((o) => authUserID == o.user.id)
-    //   .map((c) => c.chatroom);
 
-    // const userChatRooms = chatRoomUsers
-    //   .filter((o) => authUserID == o.user.id)
-    //   .map((c) => c.chatroom);
-
-    // return console.log({ userChatRooms, authChatRooms, chatRooms });
-    return console.log({
-      chatRoomUsers: chatRoomUsers.filter(
-        (cru) =>
-          chatRooms.map((a) => a.id).includes(cru.chatroom.id) &&
-          cru.user.id == user.id
-      ),
-    });
-    let chatroom = null;
-    authChatRooms.forEach((authChatRoom) => {
-      userChatRooms.forEach((userChatRoom) => {
-        //  console.log(authChatRoom.id == userChatRoom.id);
-        if (authChatRoom.id == userChatRoom.id) {
-          chatroom = authChatRoom;
-        }
-      });
-    });
+    const filteredChatRoomUsers = chatRoomUsers.filter(
+      (cru) =>
+        //find from chatrooms of auth
+        chatRooms.map((a) => a.id).includes(cru.chatroom.id) &&
+        //find from the pressed user
+        cru.user.id == user.id
+    );
+    let chatroom = filteredChatRoomUsers[0]
+      ? filteredChatRoomUsers[0].chatroom
+      : null;
 
     return chatroom ? chatroom : await getNewChatRoom(authUserID);
   };
@@ -69,7 +55,7 @@ export default function UserItem({ user, chatRooms }) {
   };
   const onPress = async () => {
     const chatroom = await getChatRoom();
-    return;
+
     // console.log(
     //   authUser,
     //   "/////////////////////////////////////////*************************"

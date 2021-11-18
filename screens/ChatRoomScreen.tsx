@@ -12,7 +12,7 @@ import Message from "../components/Message";
 import { ChatRoom, Message as MessageModel } from "../src/models";
 // import chatRoomData from "../assets/dummy-data/Chats";
 import MessageInput from "../components/MessageInput";
-import { DataStore } from "aws-amplify";
+import { DataStore, SortDirection } from "aws-amplify";
 
 export default function ChatRoomScreen(props) {
   const route = useRoute();
@@ -29,8 +29,10 @@ export default function ChatRoomScreen(props) {
 
   async function fetchMessages() {
     if (!chatRoom) return;
-    const fetchedMessages = await DataStore.query(MessageModel, (message) =>
-      message.chatroomID("eq", chatRoom.id)
+    const fetchedMessages = await DataStore.query(
+      MessageModel,
+      (message) => message.chatroomID("eq", chatRoom.id),
+      { sort: (message) => message.createdAt(SortDirection.DESCENDING) }
     );
     //console.log(`fetchedMessages`, fetchedMessages);
     setMessages(fetchedMessages);
@@ -38,14 +40,23 @@ export default function ChatRoomScreen(props) {
   useEffect(() => {
     fetchChatRoom();
   }, []);
+
+  useEffect(() => {
+    const subscription = DataStore.observe(MessageModel).subscribe((msg) => {
+      // console.log(msg.model, msg.opType, msg.element);
+      if (msg.model === MessageModel && msg.opType === "INSERT") {
+        setMessages((existingMessage) => [msg.element, ...existingMessage]);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
+
   useEffect(() => {
     fetchMessages();
   }, [chatRoom]);
   const navigation = useNavigation();
 
-  console.warn("Displaying chat room: ", route.params?.id);
-
-  navigation.setOptions({ title: chatRoom?.id });
   if (!chatRoom) return <ActivityIndicator />;
   return (
     <SafeAreaView style={styles.page}>
