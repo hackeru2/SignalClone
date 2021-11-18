@@ -8,7 +8,6 @@ import User from "../src/models";
 export default function UserItem({ user }) {
   const navigation = useNavigation();
   const onPress = () => {
-    console.warn("pressed on ", user.name);
     navigation.navigate("user", { id: user.id });
   };
   return (
